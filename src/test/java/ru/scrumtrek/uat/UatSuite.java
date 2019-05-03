@@ -1,10 +1,12 @@
 package ru.scrumtrek.uat;
 
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.platform.suite.api.SelectPackages;
 import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import ru.scrumtrek.uat.features.UatMainflow;
 
-@RunWith(JUnitPlatform.class)
-@SelectPackages({"ru.scrumtrek.uat.feature"})
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+        UatMainflow.class
+})
 public class UatSuite {
 }
