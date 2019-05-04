@@ -86,5 +86,6 @@ public class MainPage {
     public void removeLines() {
         WebElement button = driver.findElement(By.xpath("//button[contains(text(), 'Delete all')]"));
         button.click();
+        wait.until(invisibilityOfElementLocated(By.xpath("//div[@data-find='line-row']")));
     }
 }

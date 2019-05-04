@@ -73,6 +73,22 @@ public class StepDefinitions {
         assertThat(lines).containsOnly(expectedLines);
     }
 
+    @Тогда("^пользователь видит окно с ошибкой$")
+    public void checkErrorPopupVisibility() {
+        assertThat(mainPage.isErrorPopupVisible()).isTrue();
+    }
+
+    @И("^текст ошибки \"([^\"]*)\"$")
+    public void checkErrorText(String errorText) {
+        assertThat(mainPage.getErrorPopupText()).isEqualTo(errorText);
+    }
+
+    @И("^закрывает окно с ошибкой$")
+    public void checkPopupClosing() {
+        mainPage.closeErrorPopup();
+        assertThat(mainPage.isErrorPopupVisible()).isFalse();
+    }
+
     @Тогда("^заказничаем тестирование$")
     public void checkBrowserIsClosed() {
         assertThat(mainPage).isNull();
