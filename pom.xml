@@ -22,7 +22,7 @@
         <profile>
             <id>remote</id>
             <properties>
-               <selenium-webdriver>remote</selenium-webdriver>
+                <selenium-webdriver>remote</selenium-webdriver>
             </properties>
             <build>
                 <plugins>
@@ -139,6 +139,7 @@
                             <excludes>
                                 <exclude>**/integration/*.java</exclude>
                                 <exclude>**/integration/**/*.java</exclude>
+                                <exclude>**/uat/features/*.java</exclude>
                             </excludes>
                         </configuration>
                     </execution>
@@ -162,7 +163,7 @@
                         </goals>
                         <phase>integration-test</phase>
                         <configuration>
-                            <includes>**/UatSuite.java</includes>
+                            <includes>**/uat/features/*.java</includes>
                         </configuration>
                     </execution>
                 </executions>
@@ -194,14 +195,20 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <version>${junit-platform-version}</version>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
+            <artifactId>cucumber-junit</artifactId>
             <version>${cucumber-version}</version>
             <scope>test</scope>
         </dependency>
