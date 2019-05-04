@@ -1,6 +1,7 @@
 package ru.scrumtrek.selenium.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -50,10 +51,36 @@ public class MainPage {
                                 By.xpath("//div[@data-find='line-name' and contains(text(), '" + text + "')]")
                         ),
                         presenceOfElementLocated(
-                                By.id("__BVID__3")
+                                By.xpath("//div[@role='dialog']")
                         )
                 )
         );
+    }
+
+    public boolean isErrorPopupVisible() {
+        try {
+            return null != driver.findElement(By.xpath("//div[@role='dialog']"));
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public String getErrorPopupText() {
+        wait.until(visibilityOf(
+                driver.findElement(
+                        By.xpath("//div[@role='dialog']//div[@role='document']/div[@class='modal-body']")
+                )
+        ));
+        return driver.findElement(
+                By.xpath("//div[@role='dialog']//div[@role='document']/div[@class='modal-body']")
+        ).getText();
+    }
+
+    public void closeErrorPopup() {
+        driver.findElement(
+                By.xpath("//div[@role='dialog']//div[@role='document']//button[contains(text(), 'OK')]")
+        ).click();
+        wait.until(invisibilityOfElementLocated(By.xpath("//div[@role='dialog']")));
     }
 
     public void removeLines() {
