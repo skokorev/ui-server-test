@@ -39,7 +39,7 @@ public class LinesTest {
 
     @Test
     @Order(2)
-    public void checkAddLineThreeTimes() throws Exception {
+    public void checkAddLineThreeTimes() {
         mainPage.addLine("line1");
         mainPage.addLine("line2");
         mainPage.addLine("line3");
@@ -59,6 +59,16 @@ public class LinesTest {
 
     @Test
     @Order(4)
+    public void checkDuplicateValueIsNotAdded() {
+        mainPage.addLine("line3");
+        assertThat(mainPage.isErrorPopupVisible()).isTrue();
+        assertThat(mainPage.getErrorPopupText()).isEqualTo("Cannot enter existing string: line3");
+        mainPage.closeErrorPopup();
+        assertThat(mainPage.isErrorPopupVisible()).isFalse();
+    }
+
+    @Test
+    @Order(5)
     public void checkRemoveLines() {
         mainPage.removeLines();
         List<Line> lines = mainPage.getLines();
