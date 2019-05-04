@@ -139,6 +139,7 @@
                             <excludes>
                                 <exclude>**/integration/*.java</exclude>
                                 <exclude>**/integration/**/*.java</exclude>
+                                <exclude>**/uat/features/*.java</exclude>
                             </excludes>
                         </configuration>
                     </execution>
@@ -162,7 +163,7 @@
                         </goals>
                         <phase>integration-test</phase>
                         <configuration>
-                            <includes>**/UatSuite.java</includes>
+                            <includes>**/uat/features/*.java</includes>
                         </configuration>
                     </execution>
                 </executions>
@@ -191,12 +192,6 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit-version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <version>${junit-platform-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
