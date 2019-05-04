@@ -39,7 +39,7 @@ public class LinesTest {
 
     @Test
     @Order(2)
-    public void checkAddLineThreeTimes() throws Exception {
+    public void checkAddLineThreeTimes() {
         mainPage.addLine("line1");
         mainPage.addLine("line2");
         mainPage.addLine("line3");
