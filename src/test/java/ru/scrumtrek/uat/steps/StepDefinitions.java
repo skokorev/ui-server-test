@@ -73,7 +73,7 @@ public class StepDefinitions {
         assertThat(lines).containsOnly(expectedLines);
     }
 
-    @Тогда("^пользователь видит окно с ошибкой$")
+    @Тогда("^(?:пользователь|он) видит окно с ошибкой$")
     public void checkErrorPopupVisibility() {
         assertThat(mainPage.isErrorPopupVisible()).isTrue();
     }
@@ -89,7 +89,7 @@ public class StepDefinitions {
         assertThat(mainPage.isErrorPopupVisible()).isFalse();
     }
 
-    @Тогда("^заказничаем тестирование$")
+    @Тогда("^заканчиваем тестирование$")
     public void checkBrowserIsClosed() {
         assertThat(mainPage).isNull();
     }
