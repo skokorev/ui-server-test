@@ -25,8 +25,8 @@ public class MainPage {
     private static String getUrl() {
         String driverType = getProperty("selenium-webdriver");
         return null == driverType || "local".equals(driverType) ?
-                "http://localhost:8080" :
-                "http://ui-service:8080";
+                "http://localhost:8689" :
+                "http://ui-service:8689";
     }
 
     public static MainPage open(WebDriver driver) {

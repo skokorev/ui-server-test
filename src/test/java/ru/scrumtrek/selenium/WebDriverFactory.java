@@ -4,7 +4,6 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -28,6 +27,7 @@ public class WebDriverFactory {
                         webdriver :
                         "/opt/chromedriver/chromedriver");
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
         //options.addArguments("--no-sandbox");
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().setSize(new Dimension(1600, 1200));
@@ -36,8 +36,11 @@ public class WebDriverFactory {
 
     private static WebDriver createRemoteWebdriver() {
         try {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
             return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),
-                    DesiredCapabilities.chrome());
+                    options);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
