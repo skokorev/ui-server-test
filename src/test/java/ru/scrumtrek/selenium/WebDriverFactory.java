@@ -27,7 +27,7 @@ public class WebDriverFactory {
                         webdriver :
                         "/opt/chromedriver/chromedriver");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        //options.addArguments("--headless");
         //options.addArguments("--no-sandbox");
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().setSize(new Dimension(1600, 1200));
